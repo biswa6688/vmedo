@@ -6,9 +6,79 @@
         "poweredby": "www.xyz.com"
     },
     "regex": {
+        "username": {
+            "pattern": "^[a-zA-Z0-9_-]{6,32}$",
+            "message": "LoginId must be alpha-numeric, start with alphabet, special characters allowed are - and _, within 6-32 characters"
+        },
+        "password": {
+            "pattern": "^\\w{6,32}\\b",
+            "message": "Password must be alpha-numeric and with in 6-32 character"
+        },
         "email": {
-            "pattern": "/^(([^<>()[]\\.,;:s@\"]+(.[^<>()[]\\.,;:s@\"]+)*)|(\".+\"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/",
-            "message": "Invalid email id !"
+            "pattern":"^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
+            "message":"Invalid email id !"
+        },
+        "mobile": {
+            "pattern":"^(\\+\\d{1,2}\\s?)?1?\\-?\\.?\\s?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$",
+            "message":"Invalid mobile number !"
+        },
+        "age": {
+            "pattern": "^(12[0]|1[01][0-9]|[1-9]?[0-9])$",
+            "message":"Age must be between 1-120 !"
+        },
+        "string": {
+            "pattern": "^\\w{6,300}\\b",
+            "message":"Value must be between 6-300 characters !"
+        }
+    },
+    "api": {
+        "user": {
+            "auth": {
+                "url": "http://apitest.vmedo.com/api/auth/RefreshToken",
+                "method": "POST"
+            },
+            "login": {
+                "url": "http://apitest.vmedo.com/api/user/Userauthentication",
+                "method": "POST"
+            },
+            "register": {
+                "url": "http://apitest.vmedo.com/api/user/RegisterUser",
+                "method": "POST"
+            }
+        },
+        "hospital": {
+            "register": {
+                "url": "http://apitest.vmedo.com/api/hospital/RegisterHospital",
+                "method": "POST"
+            },
+            "fetchDetailsById": {
+                "url": "http://apitest.vmedo.com/api/hospital/GetAllHospitalDetails?HospitalID=",
+                "method": "GET"
+            },
+            "fetchDetailsByUserId": {
+                "url": "http://apitest.vmedo.com/api/user/GetAllHospitalDetailsByUser?UserID=",
+                "method": "GET"
+            },
+            "fetchBed": {
+                "url": "http://apitest.vmedo.com/api/hospital/GetAllHospitalBedType",
+                "method": "GET"
+            },
+            "updateBed": {
+                "url": "http://apitest.vmedo.com/api/hospital/UpdateHospitalBed",
+                "method": "POST"
+            },
+            "updateStatus": {
+                "url": "http://apitest.vmedo.com/api/hospital/UpdateHospitalStatus",
+                "method": "POST"
+            },
+            "fetchSpecializationInfo": {
+                "url": "http://apitest.vmedo.com/api/hospital/GetAllHospitalSpelizationandEmergency?Rtype=1",
+                "method": "GET"
+            },
+            "fetchEmergencyInfo": {
+                "url": "http://apitest.vmedo.com/api/hospital/GetAllHospitalSpelizationandEmergency?Rtype=2",
+                "method": "GET"
+            }
         }
     }
 }
